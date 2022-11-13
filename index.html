@@ -1,0 +1,460 @@
+<html>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    </head>
+
+<body>
+
+    <div class="logo-container">
+        <div class="logo-box">
+            injobmarket.org
+        </div>
+    </div>
+    <div id="myModal" class="modal">
+
+        <div class="modal-content" style="overflow: auto;"> 
+            <span class="close">&times;</span>
+
+            <!--LOGIN CONTAINER START -->
+            
+
+            <div id= "login-signup-container" class="container" style="display: none;">
+
+                <div id = "login-container" class="container">
+                    <div class="form-header-container">
+                                <div class="form-header">
+                                    Login
+                                </div>
+                    </div>
+                    <div class="main">
+                        <div class="form-field-header">Email</div>
+                        <div class="form-field-value">
+                            <input id="login-email" class="field-text" type="email" maxlength="70">
+                        </div>
+                    </div>
+                    <div class="main">
+                        <div class="form-field-header">Password</div>
+                        <div class="form-field-value">
+                        <input id="login-password" class="field-text" type="password" maxlength="50">
+                        </div>
+                    </div>
+                    <div id="login-button" onclick="login()" class="main">
+                        <div class="form-field-header form-submit-button">
+                            LOGIN
+                        </div>
+                    </div>
+                    <div class="main">
+                        <div class="form-field-value" >
+                            <div class="form-navigation-text" onclick="navToPage('signup')">Dont have an account yet ? Click here to SignUp</div>
+                        </div>
+                    </div>
+                    <div class="main"> 
+                        <div class="form-field-value">
+                            <div class="form-error-box" id="login-message-box"></div>
+                        </div>
+                    </div>
+                 </div>
+    
+    
+    
+                 <div id = "signup-container" class="container" style="display: none;">
+                    <div class="form-header-container">
+                                <div class="form-header">
+                                    SignUp
+                                </div>
+                    </div>
+                    <div class="main">
+                        <div class="form-field-header">Email</div>
+                        <div class="form-field-value">
+                            <input id="signup-email" class="field-text" type="email" maxlength="70">
+                        </div>
+                    </div>
+                    <div class="main">
+                        <div id="signup-button" onclick="signUp()" class="form-field-header form-submit-button" >
+                            SIGN UP
+                        </div>
+                    </div>
+                    <div class="main">
+                        <div class="form-field-value" onclick="navToPage('login')">
+                            <div class="form-navigation-text">Already have an account ? Click here to Login</div>
+                        </div>
+                    </div>
+                    <div class="main">  
+                        <div class="form-field-value">
+                            <div class="form-error-box" id="signup-message-box"></div>
+                        </div>
+                    </div>
+                 </div>
+        </div>
+
+       
+        <!--LOGIN CONTAINER END -->
+
+
+        <!--PROFILE CONTAINER START -->
+
+
+        <div id="profile-container" class="container" style="display: none;">
+
+            <div class="form-header-container">
+                    <div class="form-header" style="font-size: 35px;">
+                        Profile
+                    </div>
+            </div>
+
+            
+    
+    
+            <div class="main">
+                <div class="form-field-header"> Name</div>
+                <div class="form-field-value">
+                  <input id="form-name" class="field-text" type="text" maxlength="50">
+                </div>
+            </div>
+    
+            <div class="main">
+              <div class="form-field-header"> Company</div>
+              <div class="form-field-value">
+                <select id ="form-company" name=""></select>
+              </div>
+            </div>
+
+            <div class="main" style="display: none;" id="form-company-name-container">
+                <div class="form-field-header">Enter your company name</div>
+                <div class="form-field-value">
+                    <input id="form-company-name" class="field-text" type="text" maxlength="50">
+                </div>
+              </div>
+    
+    
+            <div class="main">
+                <div class="form-field-header"> Role</div>
+                <div class="form-field-value">
+                  <input id="form-role" class="field-text" type="text" maxlength="50">
+                </div>
+            </div>
+    
+            <div class="main">
+                <div class="form-field-header">Enter your experience in Years</div>
+                <div class="form-field-value">
+                    <input id="form-experience" class="field-text" type="number">
+                </div>
+            </div>
+    
+            <div class="main">
+                <div class="form-field-header">Do you need visa sponsorship</div>
+                <div class="form-field-value" >
+                    <div class="field-text" >
+                        <input type="checkbox" id="form-sponsorship-yes" onclick = 'visa_toggle("form-sponsorship-no")' name="need-sponsorship" value="exp-hl" >
+                        <label for="need-sponsorship">Yes</label>
+                        <input type="checkbox" id="form-sponsorship-no" onclick = 'visa_toggle("form-sponsorship-yes")' name="no-need-sponsorship" value="exp-hl">
+                        <label for="no-need-sponsorship">No</label><br>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="main" id="visa-type-container" style="display: none;">
+                <div class="form-field-header">Type of visa ex: H, F, J Type Visas</div>
+                <div class="form-field-value">
+                  <input id="form-visa-type" class="field-text" type="text" maxlength="10">
+                </div>
+            </div>
+    
+            <div class="main" id="tlv-container" style="display: none;">
+                <div class="form-field-header">Time left on your visa. Select the Expiration date.</div>
+                <div class="form-field-value">
+                  <input id="form-date" class="field-text" type="date">
+                </div>
+            </div>
+    
+            <div class="main">
+                <div class="form-field-header">Country</div>
+                <div class="form-field-value">
+                  <select id ="form-country" name=""></select>
+                </div>
+            </div>
+    
+            <div class="main">
+                <div class="form-field-header">Linkedin</div>
+                <div class="form-field-value">
+                  <input id="form-linkedin" class="field-text" type="text" maxlength="100">
+                </div>
+            </div>
+    
+            <div class="main">
+                <div class="form-field-header">Do you consent to display your email id in the table ?</div>
+                <div class="form-field-value" >
+                    <div class="field-text">
+                        <input type="checkbox" id="form-email-yes"  onclick = 'email_toggle("form-email-no")' name="email-consent-Yes" value="exp-hl" >
+                        <label for="email-consent-Yes">Yes</label>
+                        <input type="checkbox" id="form-email-no" onclick = 'email_toggle("form-email-yes")' name="email-consent-No" value="exp-hl">
+                        <label for="email-consent-No">No</label><br>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main">
+                <div class="form-field-header">Were you affected by the recent layoffs ?</div>
+                <div class="form-field-value" >
+                    <div class="field-text">
+                        <input type="checkbox" id="layoff-yes"  onclick = 'layoff_toggle("layoff-no")' name="layoff-Yes">
+                        <label for="layoff-Yes">Yes</label>
+                        <input type="checkbox" id="layoff-no" onclick = 'layoff_toggle("layoff-yes")' name="layoff-No">
+                        <label for="layoff-No">No</label><br>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main">  
+                <div class="form-field-value">
+                    <div class="form-error-box" id="form-message-box"></div>
+                </div>
+            </div>
+
+            <div class="main submit-button-container">
+                <div id ="form-update" onclick="updateProfile()"class="form-field-header submit-button" >
+                    UPDATE
+                </div>
+            </div>
+
+           
+           
+    
+        </div>
+    
+
+         <!--PROFILE CONTAINER END -->
+
+         <!--FILTER CONTAINER START -->
+
+         <div id="filter-container" class="container" style="display: none;">
+
+
+            <div class="form-header-container">
+                <div class="form-header" style="font-size: 35px;">
+                    Filter
+                </div>
+            </div>
+            
+            <div class="main">
+                <div class="form-field-header">Company</div>
+                <div class="form-field-value">
+                  <select id ="filter-company" name=""></select>
+                </div>
+            </div>
+
+            <div class="main">
+                <div class="form-field-header">Country</div>
+                <div class="form-field-value">
+                  <select id ="filter-country" name=""></select>
+                </div>
+            </div>
+
+            <div class="main">
+       
+                <div class="form-field-value">
+                  We are improving filter. We understand its one of the most important feature.
+                </div>
+            </div>
+
+            <div class="main submit-button-container">
+                <div id ="filter-apply" onclick="applyFilter()"class="form-field-header submit-button" >
+                    APPLY
+                </div>
+            </div>
+
+
+        </div>
+
+        
+
+    
+
+
+
+         <!--FILTER CONTAINER END -->
+
+
+         
+
+        
+
+
+        </div>
+    </div>
+
+    <div class = "container" style="justify-content: inherit;">
+
+
+        
+
+        <!--WIDGETS CONTAINER START -->
+        <div class="actions-container">
+            
+            <div class="widgets-container">
+                <div id = "filter"class="filter-button">
+                    <span> FILTER</span>
+                </div>
+            </div>
+
+            <div id="addme-widget-container" class="widgets-container" style="display: none;">
+                <div id = "add-me" class="filter-button">
+                    <span >ADD ME</span>
+                </div>
+            </div>
+
+            <div id="removeme-widget-container" class="widgets-container" style="display: none;">
+                <div id = "remove-me" class="filter-button" style="background-color: ff6961;">
+                    <span  >REMOVE ME</span>
+                </div>
+            </div>
+
+            <div id= "profile-widget-container" class="widgets-container" style="display: none;">
+                <div id = "profile"class="filter-button">
+                    <span> PROFILE</span>
+                </div>
+            </div>
+
+            <div id="login-widget-container" class="widgets-container" style="display: none;">
+                <div id = "login"class="filter-button">
+                    <span>LOGIN</span>
+                </div>
+            </div>
+
+            <div id="logout-widget-container" class="widgets-container" style="display: none;">
+                <div id = "logout"class="filter-button" >
+                    <span>LOGOUT</span>
+                </div>
+            </div>
+
+            <div id="name-container" class="widgets-container" style="float:left;width: 20%;display:none">
+                <div id = "widgets-username"class="filter-button" style="width: 100%;background-color: whitesmoke;text-align: left;">
+                    <span id="name-span-text"> </span>
+                </div>
+            </div>
+            
+        </div>
+        <!--WIDGETS CONTAINER END -->
+
+        <!-- ALERT CONTAINER START-->
+
+        <div id="alert-container">
+                <div id="alert-box" class="alert">
+                        
+                </div>
+                <div id="alert-close">
+                        X
+                </div>
+        </div>
+
+
+        <!--ALERT CONTAINER END -->
+
+        <div class = "participants-container">
+            <div class="participant-header" style="background-color: lightgray;">
+
+                    <div class ="participant-fields-container  participant-fields-container-extend-width-by-25" >
+                        <div class="participant-fields-header" style="height: 100%;" >
+                            <span >Name</span>
+                        </div>
+                     
+                    </div>
+
+                    <div class ="participant-fields-container participant-fields-container-extend-width-by-25" >
+                        <div class="participant-fields-header" style="height: 100%;">
+                            <span>Company</span>
+                        </div>
+                       
+                    </div>
+
+                    <div class ="participant-fields-container participant-fields-container-extend-width-by-25" >
+                        <div class="participant-fields-header" style="height: 100%;">
+                            <span>Role</span>
+                        </div>
+                       
+                    </div>
+
+                    <div class ="participant-fields-container">
+                        <div class="participant-fields-header" style="height: 100%;">
+                            <span >Experience (Years)</span>
+                        </div>
+                     
+                    </div>
+
+                    <div class ="participant-fields-container">
+                        <div class="participant-fields-header" style="height: 100%;">
+                            <span>Visa Sponsorship</span>
+                        </div>
+                     
+                    </div>
+
+                    <div class ="participant-fields-container">
+                        <div class="participant-fields-header" style="height: 100%;">
+                            <span>Visa Type</span>
+                        </div>
+                        
+                    </div>
+
+                    <div class ="participant-fields-container">
+                        <div class="participant-fields-header" style="height: 100%;">
+                            <span>Time Left on Visa(days)</span>
+                        </div>
+                       
+                    </div>
+
+                    <div class ="participant-fields-container">
+                        <div class="participant-fields-header" style="height: 100%;">
+                            <span>Country</span>
+                        </div>
+                      
+                    </div>
+
+
+                    <div class ="participant-fields-container">
+                        <div class="participant-fields-header" style="height: 100%;">
+                            <span>LinkedIn</span>
+                        </div>
+                       
+                    </div>
+
+                    
+
+                    <div class ="participant-fields-container  participant-fields-container-extend-width-by-25" >
+                        <div class="participant-fields-header" style="height: 100%;" >
+                            <span >Email</span>
+                        </div>
+                     
+                    </div>
+
+                    
+
+
+            </div>
+
+
+            
+    <div id="participant-list" >
+    </div>
+
+
+
+
+        </div>
+
+    </div>
+
+
+</body>
+
+
+<script src="display.js"></script>
+<script src="login.js"></script>
+<script src="profile.js"></script>
+<script src="filter.js"></script>
+
+</html>
